@@ -1,0 +1,2 @@
+
+Add a dummy node at top and bottom that is connected to top/bottom row, check if connected after each insertion.
