@@ -72,9 +72,6 @@ public class Percolation {
             qf.union(mStartIdx, rci(row, col));
         if (row == mSize)
             qf.union(mEndIdx, rci(row, col));
-
-        boolean test = percolates();
-        System.out.println(test);
     }
 
     // is the site (row, col) open?
@@ -86,7 +83,7 @@ public class Percolation {
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
         if (row < 1 || row > mSize || col < 1 || col > mSize) throw new IllegalArgumentException();
-        return qf.connected(mStartIdx,rci(row, col));
+        return qf.find(mStartIdx) == qf.find(rci(row, col));
     }
 
     // returns the number of open sites
@@ -96,7 +93,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        return qf.connected(mStartIdx, mEndIdx);
+        return qf.find(mStartIdx) == qf.find(mEndIdx);
     }
 
     // test client (optional)
