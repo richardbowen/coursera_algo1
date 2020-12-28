@@ -1,42 +1,11 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-class DequeIterator<Item> implements Iterator<Item> {
-
-    private Deque<Item>.DNode<Item> next;
-
-    public DequeIterator(Deque<Item> d) {
-        next = d.head;
-    }
-
-    @Override
-    public boolean hasNext() {
-        return next != null;
-    }
-
-    @Override
-    public Item next() {
-        Deque<Item>.DNode<Item> result = next;
-        next = next.next;
-        return result.val;
-    }
-
-    @Override
-    public void remove() {
-        throw new UnsupportedOperationException();
-    }
-
-//    @Override
-//    public void forEachRemaining(Consumer<? super Item> action) {
-//
-//    }
-}
-
 
 public class Deque<Item> implements Iterable<Item> {
 
-    DNode<Item> head = null;
-    DNode<Item> tail = null;
+    private DNode<Item> head = null;
+    private DNode<Item> tail = null;
     private int count = 0;
 
     // construct an empty deque
@@ -44,14 +13,44 @@ public class Deque<Item> implements Iterable<Item> {
 
     }
 
-    class DNode<NodeT> {
-        NodeT val;
-        DNode<NodeT> next = null;
-        DNode<NodeT> prev = null;
+    private class DNode<NodeT> {
+        private final NodeT val;
+        private DNode<NodeT> next = null;
+        private DNode<NodeT> prev = null;
 
         public DNode(NodeT item) {
             this.val = item;
         }
+    }
+
+    private class DequeIterator<ItemIt> implements Iterator<ItemIt> {
+
+        private Deque<ItemIt>.DNode<ItemIt> next;
+
+        private  DequeIterator(Deque<ItemIt> d) {
+            next = d.head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return next != null;
+        }
+
+
+        @Override
+        public ItemIt next() {
+            if (next==null)
+                throw new NoSuchElementException();
+            Deque<ItemIt>.DNode<ItemIt> result = next;
+            next = next.next;
+            return result.val;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
     // is the deque empty?
