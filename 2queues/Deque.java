@@ -27,7 +27,7 @@ public class Deque<Item> implements Iterable<Item> {
 
         private Deque<ItemIt>.DNode<ItemIt> next;
 
-        private  DequeIterator(Deque<ItemIt> d) {
+        private DequeIterator(Deque<ItemIt> d) {
             next = d.head;
         }
 
@@ -39,7 +39,7 @@ public class Deque<Item> implements Iterable<Item> {
 
         @Override
         public ItemIt next() {
-            if (next==null)
+            if (next == null)
                 throw new NoSuchElementException();
             Deque<ItemIt>.DNode<ItemIt> result = next;
             next = next.next;
