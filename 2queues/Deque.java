@@ -95,6 +95,10 @@ public class Deque<Item> implements Iterable<Item> {
         }
     }
 
+    public Item peekFirst() {
+        return this.head.val;
+    }
+
     // remove and return the item from the front
     public Item removeFirst() {
         if (isEmpty())
@@ -139,10 +143,10 @@ public class Deque<Item> implements Iterable<Item> {
     // unit testing (required)
     public static void main(String[] args) {
         Deque<String> d = new Deque<>();
-//        d.addFirst("a");
+        d.addFirst("a");
 //        d.addFirst("c");
 //
-//        String o = d.removeLast();
+        d.removeLast();
 //        String o2 = d.removeLast();
 
     }
