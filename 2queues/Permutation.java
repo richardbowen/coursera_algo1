@@ -9,9 +9,11 @@ public class Permutation {
 
         System.out.println( num);
 
-        String[] vals = StdIn.readAll().split(" ");
-        for(String s : vals){
-            System.out.println(s);
+        while (!StdIn.isEmpty()){
+            String[] vals = StdIn.readAll().split(" ");
+            for(String s : vals){
+                System.out.println(s);
+            }
         }
 
     }
