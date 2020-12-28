@@ -75,7 +75,7 @@ public class Deque<Item> implements Iterable<Item> {
             this.tail = this.head;
         else {
             this.head.next = old;
-            old.prev = this.head.next;
+            old.prev = this.head;
         }
     }
 
@@ -139,17 +139,11 @@ public class Deque<Item> implements Iterable<Item> {
     // unit testing (required)
     public static void main(String[] args) {
         Deque<String> d = new Deque<>();
-        d.addFirst("a");
-        d.addLast("b");
-        d.addFirst("c");
-
-//        String result = "";
-//        for (String s : d) {
-//            result += s;
-//        }
-        String o = d.removeFirst();
-        String o2 = d.removeLast();
-        String o3 = d.removeFirst();
+//        d.addFirst("a");
+//        d.addFirst("c");
+//
+//        String o = d.removeLast();
+//        String o2 = d.removeLast();
 
     }
 
