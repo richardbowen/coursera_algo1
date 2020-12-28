@@ -5,12 +5,17 @@ import java.util.NoSuchElementException;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
+    private final Deque<Item> deque = new Deque<>();
+
     // construct an empty randomized queue
     public RandomizedQueue() {
 
     }
 
     private class RandomizedQueueIterator<ItemIt> implements Iterator<ItemIt> {
+
+        ItemIt[] vals;
+        int idx = 0;
 
         private RandomizedQueueIterator(Deque<ItemIt> dq) {
             vals = (ItemIt[]) new Object[dq.size()];
@@ -19,9 +24,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
                 vals[i++] = it;
             StdRandom.shuffle(vals);
         }
-
-        ItemIt[] vals;
-        int idx = 0;
 
         @Override
         public boolean hasNext() {
@@ -41,9 +43,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             throw new UnsupportedOperationException();
         }
     }
-
-
-    private final Deque<Item> deque = new Deque<>();
 
 
     // is the randomized queue empty?
@@ -85,7 +84,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         rq.enqueue("aa");
         rq.enqueue("bb");
 
-        for(String s : rq)
+        for (String s : rq)
             System.out.println(s);
 
         rq.dequeue();
