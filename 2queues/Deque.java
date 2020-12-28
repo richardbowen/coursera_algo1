@@ -95,10 +95,6 @@ public class Deque<Item> implements Iterable<Item> {
         }
     }
 
-    public Item peekFirst() {
-        return this.head.val;
-    }
-
     // remove and return the item from the front
     public Item removeFirst() {
         if (isEmpty())
